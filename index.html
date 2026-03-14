@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>RedNode Tech Consulting</title>
 
 <style>
+
+*{
+box-sizing:border-box;
+}
 
 body{
 font-family: Arial, sans-serif;
@@ -14,18 +21,28 @@ background:#f5f5f5;
 color:#333;
 }
 
+/* HEADER */
+
 header{
 background:white;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 60px;
+padding:20px 40px;
 box-shadow:0 2px 10px rgba(0,0,0,0.05);
+position:sticky;
+top:0;
+z-index:1000;
 }
 
 .logo{
-font-size:26px;
+font-size:22px;
 font-weight:bold;
+}
+
+nav{
+display:flex;
+align-items:center;
 }
 
 nav a{
@@ -35,9 +52,19 @@ color:#333;
 font-weight:500;
 }
 
+/* MOBILE MENU */
+
+.menu-toggle{
+display:none;
+font-size:26px;
+cursor:pointer;
+}
+
+/* HERO */
+
 .hero{
 background:linear-gradient(120deg,#ffffff,#f0f0f0);
-padding:120px 60px;
+padding:100px 20px;
 text-align:center;
 }
 
@@ -52,7 +79,7 @@ color:#666;
 }
 
 .hero button{
-margin-top:20px;
+margin-top:25px;
 padding:14px 30px;
 background:#d62828;
 border:none;
@@ -62,45 +89,59 @@ border-radius:5px;
 cursor:pointer;
 }
 
+/* SECTIONS */
+
 .section{
-padding:80px 60px;
+padding:70px 20px;
 max-width:1100px;
 margin:auto;
 }
 
+.section h2{
+text-align:center;
+margin-bottom:20px;
+}
+
+/* SERVICES */
+
 .services{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:40px;
+gap:30px;
 margin-top:40px;
 }
 
 .card{
 background:white;
-padding:35px;
+padding:30px;
 border-radius:10px;
 box-shadow:0 4px 20px rgba(0,0,0,0.08);
+text-align:center;
 }
 
 .card h3{
 color:#d62828;
 }
 
+/* CONTACT */
+
 .contact{
 background:white;
-padding:50px;
+padding:40px;
 border-radius:10px;
 box-shadow:0 4px 20px rgba(0,0,0,0.08);
 max-width:600px;
+margin:auto;
 }
 
 input, textarea{
 width:100%;
-padding:10px;
+padding:12px;
 margin-top:6px;
 margin-bottom:16px;
 border:1px solid #ddd;
 border-radius:5px;
+font-size:14px;
 }
 
 button.submit{
@@ -112,12 +153,56 @@ border-radius:5px;
 cursor:pointer;
 }
 
+/* FOOTER */
+
 footer{
 background:#111;
 color:white;
 text-align:center;
-padding:40px;
+padding:40px 20px;
 margin-top:60px;
+font-size:14px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width:768px){
+
+header{
+padding:20px;
+}
+
+.hero h1{
+font-size:30px;
+}
+
+.hero p{
+font-size:18px;
+}
+
+nav{
+position:absolute;
+top:70px;
+right:0;
+background:white;
+flex-direction:column;
+width:200px;
+display:none;
+box-shadow:0 5px 15px rgba(0,0,0,0.1);
+}
+
+nav a{
+margin:15px 0;
+}
+
+nav.active{
+display:flex;
+}
+
+.menu-toggle{
+display:block;
+}
+
 }
 
 </style>
@@ -130,7 +215,9 @@ margin-top:60px;
 
 <div class="logo">RedNode Tech Consulting</div>
 
-<nav>
+<div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+<nav id="menu">
 <a href="#about">About</a>
 <a href="#services">Services</a>
 <a href="#contact">Contact</a>
@@ -154,7 +241,7 @@ margin-top:60px;
 
 <h2>About Us</h2>
 
-<p>
+<p style="text-align:center; max-width:800px; margin:auto;">
 RedNode Tech Consulting helps organizations leverage technology,
 data and digital strategy to accelerate business growth.
 We design modern data architectures, analytics platforms
@@ -222,7 +309,9 @@ and SEO positioning.
 
 </form>
 
-<p>Or email us directly at <b>contact@rednodetech.com</b></p>
+<p style="text-align:center">
+Or email us directly at <b>contact@rednodetech.com</b>
+</p>
 
 </div>
 
@@ -231,9 +320,18 @@ and SEO positioning.
 <footer>
 
 © 2026 RedNode Tech Consulting  
+<br><br>
 Transforming Data • Technology • Digital Growth
 
 </footer>
+
+<script>
+
+function toggleMenu(){
+document.getElementById("menu").classList.toggle("active");
+}
+
+</script>
 
 </body>
 </html>
